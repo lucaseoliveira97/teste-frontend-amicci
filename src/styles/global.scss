@@ -6,7 +6,7 @@
 	--tablet-breakpoint: 920px;
     --desktop-breakpoint: 1005px;
     --color-primary-light:#EFF2F5;
-    --color-primary-main:#61606E;
+    --color-primary-main:#8b8a9a;
     --color-primary-dark:#302F40;
     --color-secondary-light:"";
     --color-secondary-main:"";
@@ -20,6 +20,10 @@ body
     background-color: var(--bg-color);
 }
 
+*:focus {
+    outline: 1px solid var(--color-primary-main)
+}
+
 .center--flex
 {
     display: flex;
@@ -29,5 +33,5 @@ body
 .page--body
 {
     width: clamp(120px, 100%, var(--desktop-breakpoint));
-    padding: 0 1.25rem;
+    margin: 0 1.25rem;
 }
