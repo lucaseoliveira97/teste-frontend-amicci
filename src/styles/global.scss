@@ -1,5 +1,19 @@
 /* reset css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+	--mobile-breakpoint: 672px;
+	--tablet-breakpoint: 920px;
+    --desktop-breakpoint: 1260px;
+    --color-primary-light:"";
+    --color-primary-main:"";
+    --color-primary-dark:"";
+    --color-secondary-light:"";
+    --color-secondary-main:"";
+    --color-secondary-dark:"";
+    --bg-color:"";
+
+}
 body
 {
     font-family: "Roboto", sans-serif;
