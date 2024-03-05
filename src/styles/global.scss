@@ -18,3 +18,14 @@ body
 {
     font-family: "Roboto", sans-serif;
 }
+
+.center--flex
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page--body
+{
+    width: clamp(120px, 100%, var(--desktop-breakpoint));
+}
