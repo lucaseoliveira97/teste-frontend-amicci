@@ -4,9 +4,9 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
  children?:ReactNode
 }
  
-const Button =({ children }: ButtonProps) =>{
+const Button =({ children, ...rest }: ButtonProps) =>{
     return (
-        <button>
+        <button {...rest}>
             {children}
         </button>
     );
