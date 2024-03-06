@@ -9,15 +9,17 @@
     --color-primary-main:#8b8a9a;
     --color-primary-dark:#302F40;
     --color-secondary-light:#C4E2FF;
-    --color-secondary-main:#4788c9;
-    --color-secondary-dark:#133d67;
-    --bg-color:#FFFFFF;
+    --color-secondary-main:#7DA8D2;
+    --color-secondary-dark:#213A52;
+    --bg-color-light:#FFFFFF;
+    --bg-color-main:#F8FAFC;
+    --bg-color-dark:#F6F6F6;
 
 }
 body
 {
     font-family: "Roboto", sans-serif;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color-light);
 }
 
 *:focus {
