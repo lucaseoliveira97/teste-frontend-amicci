@@ -1,0 +1,9 @@
+$mobile:672px;
+$tablet:920px;
+$desktop:1005px;
+
+:export {
+    mobile: $mobile;
+    tablet:$tablet;
+    desktok:$desktop
+}
