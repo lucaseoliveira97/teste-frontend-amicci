@@ -1,16 +1,13 @@
-import { ReactNode } from "react";
-import "./style.scss"
-type CardProps = {
- children?: ReactNode,
- type?:"s" | "m" | "l"
- gridArea?:string
-}
- 
-const Card =({ children, type="m" ,gridArea}: CardProps) =>{
-    return (
-        <article className={`card--type_${type}`} style={{gridArea:gridArea}}>
-            {children}
-        </article>
-    );
+import CardData from "./CardData"
+import CardFooter from "./CardFooter"
+import CardRoot from "./CardRoot"
+import CardTitle from "./CardTitle"
+
+export const Card = {
+    Root:CardRoot,
+    Title:CardTitle,
+    Data: CardData,
+    Footer:CardFooter
+
 }
 export default Card
