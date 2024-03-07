@@ -6,15 +6,19 @@ import variables from '../../styles/variables.module.scss';
 
 type GridLayoutProps = {
  children:ReactNode,
- gridAreas:string[]
+ gridAreasDesktop:string[],
+ gridAreasTablet?:string[]
+ gridAreasMobile?:string[]
 }
  
-const GridLayout =({ gridAreas, children  }: GridLayoutProps) =>{
+const GridLayout =({ gridAreasDesktop,gridAreasTablet=gridAreasDesktop,gridAreasMobile=[], children  }: GridLayoutProps) =>{
     const mobileMatch = useMediaQuery(`(max-width:${variables.mobile})`)
     const tabletMatch = useMediaQuery(`(min-width:calc(${variables.mobile} + 1px)) and (max-width:${variables.tablet})`)
-    console.log("mobileMatch",mobileMatch,tabletMatch)
+    
+    const gridAreas = parserGridArea(mobileMatch ? gridAreasMobile : tabletMatch?gridAreasTablet:gridAreasDesktop)
+    console.log("mobileMatch",mobileMatch,tabletMatch,gridAreas)
     return (
-        <div style={{display:"grid", gridTemplateAreas:parserGridArea(gridAreas) }} className="cards--grid">
+        <div style={{display:"grid", gridTemplateAreas: gridAreas}} className="cards--grid default-padding-x">
             {children}
         </div>
     );

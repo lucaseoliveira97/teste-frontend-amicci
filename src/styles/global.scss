@@ -44,3 +44,9 @@ body
     justify-content: space-between;
     gap: 10px;
 }
+.default-padding-x
+{
+    $size:20px;
+    padding-left: $size;
+    padding-right: $size;
+}
