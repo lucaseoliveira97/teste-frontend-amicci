@@ -44,7 +44,7 @@ function useCityWeather() : UseCityWeatherResponse {
     };
 
     const fetchCity = useCallback((city:string)=>getWeather(city),[])
-    const fetchLatLong = useCallback(()=>getCity(lat,long),[])
+    const fetchLatLong = useCallback(()=>getCity(lat,long),[lat,long])
     useEffect( ()=>{
       getCity(lat, long);
     },[lat, long])
