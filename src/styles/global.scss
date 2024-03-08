@@ -22,7 +22,10 @@ body
     font-family: "Roboto", sans-serif;
     background-color: var(--bg-color-light);
 }
-
+b
+{
+    font-weight: 500;
+}
 *:focus {
     outline: 1px solid var(--color-primary-main)
 }
