@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/teste-frontend-amicci/static/css/main.215e6e5c.css",
+    "main.js": "/teste-frontend-amicci/static/js/main.d0801486.js",
+    "static/js/453.ed3810f9.chunk.js": "/teste-frontend-amicci/static/js/453.ed3810f9.chunk.js",
+    "index.html": "/teste-frontend-amicci/index.html",
+    "main.215e6e5c.css.map": "/teste-frontend-amicci/static/css/main.215e6e5c.css.map",
+    "main.d0801486.js.map": "/teste-frontend-amicci/static/js/main.d0801486.js.map",
+    "453.ed3810f9.chunk.js.map": "/teste-frontend-amicci/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.215e6e5c.css",
+    "static/js/main.d0801486.js"
+  ]
+}
