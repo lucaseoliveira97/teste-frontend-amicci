@@ -6,8 +6,16 @@
     justify-content: space-between;
     gap: 10px;
     padding: 20px;
-    background-color: var(--bg-color-dark);
+    background-color: var(--bg-color-main);
     color:var(--color-primary-dark) ;
+    border: 1px solid var(--color-primary-main);
+    transition: all 0.2s linear;
+    &:hover
+    {
+        box-shadow: 10px 0px 16px 0px rgba(0,0,0,0.05);
+        background-color: var(--bg-color-dark);
+        transform: scale(1.02)
+    }
     h1
     {
         font-size: 22px;
