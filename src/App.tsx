@@ -88,8 +88,8 @@ function App() {
             </Card.Title>
             <Card.Data>
               <div className='cards-card__multiple-itens'>
-                <div>Nivel do Mar:{weatherData?.main?.sea_level}<span> hPa</span></div>
-                <div>Nivel da Terra:{weatherData?.main?.grnd_level}<span> hPa</span></div>
+                <div>Mar:{weatherData?.main?.sea_level}<span> hPa</span></div>
+                <div>Terra:{weatherData?.main?.grnd_level}<span> hPa</span></div>
               </div>
             </Card.Data>
           </Card.Root>
