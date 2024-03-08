@@ -1,0 +1,28 @@
+.header--btn
+{
+    background-color:var(--bg-color-dark);
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    transition: all 0.4s linear;
+    border-radius: 5px;
+    outline: 1px solid var(--color-primary-main);
+    border: 0;
+    font-size: 18px;
+    color: var(--color-primary-main);
+    &:hover
+    {
+        background-color: var(--color-primary-main);
+        outline-color: var(--color-primary-dark);
+        color: var(--color-primary-dark);
+    }
+    
+}
+
+.btn--secondary
+{
+    --bg-color-dark:var(--color-secondary-main);
+    --color-primary-main:var(--color-secondary-dark);
+    --color-primary-dark:var(--color-secondary-light);
+    
+}

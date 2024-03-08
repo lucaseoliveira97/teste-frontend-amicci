@@ -1,0 +1,11 @@
+@use "../../styles/variables.module.scss" as var ;
+.cards--grid
+{
+    width: 100%;
+    gap:10px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+    @media (min-width: #{var.$mobile}) {
+        grid-auto-rows: 10rem;
+    }
+}

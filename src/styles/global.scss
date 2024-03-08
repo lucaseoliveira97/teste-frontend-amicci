@@ -1,6 +1,95 @@
 /* reset css */
+@use "./variables.module.scss" as var ;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+	--mobile-breakpoint: #{var.$mobile};
+	--tablet-breakpoint: #{var.$tablet};
+    --desktop-breakpoint: #{var.$desktop};
+    --color-primary-light:#EFF2F5;
+    --color-primary-main:#8b8a9a;
+    --color-primary-dark:#302F40;
+    --color-secondary-light:#C4E2FF;
+    --color-secondary-main:#7DA8D2;
+    --color-secondary-dark:#213A52;
+    --bg-color-light:#FFFFFF;
+    --bg-color-main:rgb(248, 248, 248);
+    --bg-color-dark:#f5f5f5;
+
+}
 body
 {
     font-family: "Roboto", sans-serif;
+    background-color: var(--bg-color-light);
+}
+b
+{
+    font-weight: 500;
+}
+*:focus {
+    outline: 1px solid var(--color-primary-main)
+}
+
+.center--flex
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page--body
+{
+    width: clamp(120px, 100%, var(--desktop-breakpoint));
+    margin: 0 auto;
+
+    @media (max-width: #{var.$desktop}) {
+        padding: 10px;
+    }
+}
+.main--card
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    position: relative;
+}
+.default-padding-x
+{
+    $size:20px;
+    padding-left: $size;
+    padding-right: $size;
+}
+.main--card-loading
+{
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    transition: all 0.3s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & svg
+    {
+        animation-name: rotate;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+@keyframes rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
+}
+.main--card-loading-open
+{
+    visibility: visible;
+    opacity: 1;
+}
+.main--card-loading-close
+{
+    visibility: hidden;
+    opacity: 0;
 }

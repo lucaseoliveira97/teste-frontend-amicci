@@ -1,0 +1,26 @@
+.input-wrapper
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    #city-input
+    {
+        width: 100%;
+        border: 0;
+        font-size: 1.125rem;
+        background-color: transparent;
+        color: var(--color-primary-dark);
+        padding: 10px;
+        border-radius: 5px;
+        &::placeholder 
+        {
+            color: var(--color-primary-main);
+            opacity: 0.5;
+        }
+    }
+    svg
+    {
+        color: var(--color-primary-dark);
+    }
+}
