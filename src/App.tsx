@@ -3,40 +3,98 @@ import './styles/global.scss'
 import Header from './components/Header';
 import Card from './components/Card';
 import CardGridLayout from './components/CardGridLayout';
+import { useCallback, useState } from 'react';
+import useCityWeather from './hooks/useCityWeather';
 
 
-const gridAreasDesktop = ["temp temp-max humidity", "temp temp-min pressure", "visibility wind clouds" ]
-const gridAreasMobile = ["temp", "temp-max", "humidity", "temp-min", "pressure", "visibility" ,"wind" ,"clouds" ]
+
+const gridAreasDesktop = ["temp temp feels_like humidity", "temp temp visibility clouds", "pressure pressure wind wind" ]
+const gridAreasMobile = ["temp", "feels_like", "humidity", "visibility", "clouds", "pressure" ,"wind"]
 function App() {
+  const [cityName, setCityName] = useState<string>()
+  const {city,isLoading, error, weatherData,fetchCity,fetchLatLong } = useCityWeather();
   return (
     <div className="App">
-      <Header/>
+      <Header updateCityName={fetchCity} updateLatLog={fetchLatLong}/>
       <main className='page--body main--card'>
         <CardGridLayout gridAreasDesktop={gridAreasDesktop} gridAreasMobile={gridAreasMobile}>
-          <Card type='l' gridArea='temp'>
-            aaa
-          </Card>
-          <Card type='m' gridArea='temp-max'>
-            aada
-          </Card>
-          <Card type='m' gridArea='temp-min'>
-            aada
-          </Card>
-          <Card type='m' gridArea='humidity'>
-            aada
-          </Card>
-          <Card type='m' gridArea='pressure'>
-            aada
-          </Card>
-          <Card type='m' gridArea='visibility'>
-            aada
-          </Card>
-          <Card type='m' gridArea='wind'>
-            aada
-          </Card>
-          <Card type='m' gridArea='clouds'>
-            aada
-          </Card>
+          <Card.Root type='l' gridArea='temp'>
+            <Card.Header>
+              <h2>{weatherData?.name}</h2>
+              <h1>
+                Temperatura
+              </h1>
+            </Card.Header>
+            <Card.Data>
+              {weatherData?.main.temp}<span>&#8451;</span>
+            </Card.Data>
+            <Card.Footer>
+              <div>Maxima:{weatherData?.main.temp_max}<span>&#8451;</span></div>
+              <div>Minimo:{weatherData?.main.temp_min}<span>&#8451;</span></div>
+            </Card.Footer>
+          </Card.Root>
+
+          <Card.Root type='m' gridArea='feels_like'>
+            <Card.Title>
+              Sensação térmica
+            </Card.Title>
+            <Card.Data>
+              {weatherData?.main.feels_like}<span>&#8451;</span>
+            </Card.Data>
+          </Card.Root>
+
+          <Card.Root type='m' gridArea='visibility'>
+            <Card.Title>
+              Visibilidade
+            </Card.Title>
+            <Card.Data>
+              {weatherData?.visibility}<span>&#8451;</span>
+            </Card.Data>
+          </Card.Root>
+
+          <Card.Root type='m' gridArea='humidity'>
+            <Card.Title>
+              Umidade
+            </Card.Title>
+            <Card.Data>
+              {weatherData?.main.humidity}<span>&#8451;</span>
+            </Card.Data>
+          </Card.Root>
+
+          <Card.Root type='m' gridArea='clouds'>
+            <Card.Title>
+              Nebulosidade
+            </Card.Title>
+            <Card.Data>
+              {weatherData?.clouds.all}<span>%</span>
+            </Card.Data>
+          </Card.Root>
+
+          <Card.Root type='m' gridArea='pressure'>
+          <Card.Title>
+            Pressão
+            </Card.Title>
+            <Card.Data>
+              <>
+              {weatherData?.main.sea_level}<span>%</span>
+              {weatherData?.main.grnd_level}<span>%</span>
+              </>
+            </Card.Data>
+          </Card.Root>
+
+          <Card.Root type='m' gridArea='wind'>
+            <Card.Title>
+              Vento
+            </Card.Title>
+            <Card.Data>
+              <>
+              {weatherData?.wind.speed}<span>m/s</span>
+              {weatherData?.wind.deg}<span>%</span>
+              {weatherData?.wind.gust}<span>m/s</span>
+              
+              </>
+            </Card.Data>
+          </Card.Root>
         </CardGridLayout>
       </main>
     </div>
