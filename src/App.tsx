@@ -16,19 +16,19 @@ const gridAreasMobile = ["temp", "feels_like", "humidity", "visibility", "clouds
 function App() {
   const [cityName, setCityName] = useState<string>()
   const {city,isLoading, error, weatherData,fetchCity,fetchLatLong } = useCityWeather();
-  console.log("isLoading",isLoading)
+  console.log("isLoading",isLoading,error)
   return (
     <div className="App">
       <Header updateCityName={fetchCity} updateLatLog={fetchLatLong}/>
       <main className='page--body main--card'>
-        <div className={`main--card-loading ${isLoading ? "main--card-loading-open" : "main--card-loading-close"}`}>
-          <FontAwesomeIcon size='3x' icon={faSpinner} />
+        <div className={`main--card-loading ${(isLoading || error) ? "main--card-loading-open" : "main--card-loading-close"}`}>
+          {error ? "Cidade não encontrada":<FontAwesomeIcon size='3x' icon={faSpinner} />}
         </div>
         <CardGridLayout gridAreasDesktop={gridAreasDesktop} gridAreasMobile={gridAreasMobile}>
           <Card.Root gridArea='temp'>
             <Card.Header>
               <div className='cards-card__header-description'>
-                <img src={`https://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`} alt="Clima icone" />
+                {weatherData?.weather && <img src={`https://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`} alt="Clima icone" />}
                 <h2>{weatherData?.name}</h2>
               </div>
               <h1>
@@ -39,7 +39,7 @@ function App() {
               <div>
                 <h1>{weatherData?.main?.temp}<span className='cards--card-symbol'>&#8451;</span></h1>
               </div>
-                {capitalized(weatherData?.weather[0]?.description)}     
+                {capitalized(weatherData?.weather ? weatherData?.weather[0].description : "")}     
             </Card.Data>
             <Card.Footer>
               <div><b>Maxima:</b>{weatherData?.main?.temp_max}<span>&#8451;</span></div>

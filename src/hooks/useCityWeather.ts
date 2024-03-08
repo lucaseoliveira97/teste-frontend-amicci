@@ -15,31 +15,40 @@ type UseCityWeatherResponse =
 
 function useCityWeather() : UseCityWeatherResponse {
     const [city, setCity] = useState<string>("");
-    const [isLoading, setIdLoading] = useState<boolean>(true)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
     const {lat, long} : UseGeolocationResponse = useGeolocation()
     const [data, setData] = useState<OpenWeatherResponse>();
     const [error, setError] = useState<boolean>(false);
     const getWeather = async (city:string) => {
         try {
-          setIdLoading(true)
+          setIsLoading(true)
+          setError(false)
           const apiResponse = await fetch(getOpenWeatherEndpoint(city));
-          const json:OpenWeatherResponse = await apiResponse.json();
-          setCity(city)
-          setData(json);
+          if(apiResponse.status === 200)
+          {
+            const json:OpenWeatherResponse = await apiResponse.json();
+            setCity(city)
+            setData(json);
+          }
+          else
+          {
+            setError(true);
+          }
         } catch (error) {
           setError(true);
         }
-        setIdLoading(false)
+        setIsLoading(false)
     };
     const getCity = async (lat:number, long:number) => {
         try {
+          setIsLoading(true)
           const apiResponse = await fetch(getGooglemapsEndpoint(lat, long));
           const json = await apiResponse.json();
           let adress = json.results[0].formatted_address;
           let city = adress.split(",")[2]?.split("-")[0]
           getWeather(city)
         } catch (error) {
-          setError(true);
+          console.error(error)
         }
     };
 
