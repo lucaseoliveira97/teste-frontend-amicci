@@ -16,9 +16,8 @@ const GridLayout =({ gridAreasDesktop,gridAreasTablet=gridAreasDesktop,gridAreas
     const tabletMatch = useMediaQuery(`(min-width:calc(${variables.mobile} + 1px)) and (max-width:${variables.tablet})`)
     
     const gridAreas = parserGridArea(mobileMatch ? gridAreasMobile : tabletMatch?gridAreasTablet:gridAreasDesktop)
-    console.log("mobileMatch",mobileMatch,tabletMatch,gridAreas)
     return (
-        <div style={{display:"grid", gridTemplateAreas: gridAreas}} className="cards--grid default-padding-x">
+        <div style={{display:"grid", gridTemplateAreas: gridAreas}} className="cards--grid">
             {children}
         </div>
     );
