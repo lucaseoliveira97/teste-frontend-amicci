@@ -67,4 +67,11 @@
         border-radius: 50%;
         display: flex;
     }
+    .cards-card__multiple-itens
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
 }
