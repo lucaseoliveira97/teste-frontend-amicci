@@ -3,6 +3,7 @@ import { OpenWeatherResponse, getOpenWeatherEndpoint } from '../services/openWea
 import { getGooglemapsEndpoint } from '../services/googleMaps';
 import useGeolocation, { UseGeolocationResponse } from './useGeolocation';
 
+
 type UseCityWeatherResponse = 
 {
     city:string,
@@ -48,7 +49,7 @@ function useCityWeather() : UseCityWeatherResponse {
           let city = adress.split(",")[2]?.split("-")[0]
           getWeather(city)
         } catch (error) {
-          console.error(error)
+          
         }
     };
 
