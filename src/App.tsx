@@ -18,7 +18,7 @@ function App() {
       <Header updateCityName={fetchCity} updateLatLog={fetchLatLong}/>
       <main className='page--body main--card'>
         <CardGridLayout gridAreasDesktop={gridAreasDesktop} gridAreasMobile={gridAreasMobile}>
-          <Card.Root type='l' gridArea='temp'>
+          <Card.Root gridArea='temp'>
             <Card.Header>
               <h2>{weatherData?.name}</h2>
               <h1>
@@ -34,7 +34,7 @@ function App() {
             </Card.Footer>
           </Card.Root>
 
-          <Card.Root type='m' gridArea='feels_like'>
+          <Card.Root gridArea='feels_like'>
             <Card.Title>
               Sensação térmica
             </Card.Title>
@@ -43,7 +43,7 @@ function App() {
             </Card.Data>
           </Card.Root>
 
-          <Card.Root type='m' gridArea='visibility'>
+          <Card.Root  gridArea='visibility'>
             <Card.Title>
               Visibilidade
             </Card.Title>
@@ -52,7 +52,7 @@ function App() {
             </Card.Data>
           </Card.Root>
 
-          <Card.Root type='m' gridArea='humidity'>
+          <Card.Root gridArea='humidity'>
             <Card.Title>
               Umidade
             </Card.Title>
@@ -61,7 +61,7 @@ function App() {
             </Card.Data>
           </Card.Root>
 
-          <Card.Root type='m' gridArea='clouds'>
+          <Card.Root  gridArea='clouds'>
             <Card.Title>
               Nebulosidade
             </Card.Title>
@@ -70,7 +70,7 @@ function App() {
             </Card.Data>
           </Card.Root>
 
-          <Card.Root type='m' gridArea='pressure'>
+          <Card.Root gridArea='pressure'>
           <Card.Title>
             Pressão
             </Card.Title>
@@ -82,7 +82,7 @@ function App() {
             </Card.Data>
           </Card.Root>
 
-          <Card.Root type='m' gridArea='wind'>
+          <Card.Root  gridArea='wind'>
             <Card.Title>
               Vento
             </Card.Title>
