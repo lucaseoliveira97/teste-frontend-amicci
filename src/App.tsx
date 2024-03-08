@@ -16,7 +16,6 @@ const gridAreasMobile = ["temp", "feels_like", "humidity", "visibility", "clouds
 function App() {
   const [cityName, setCityName] = useState<string>()
   const {city,isLoading, error, weatherData,fetchCity,fetchLatLong } = useCityWeather();
-  console.log("isLoading",isLoading,error)
   return (
     <div className="App">
       <Header updateCityName={fetchCity} updateLatLog={fetchLatLong}/>
@@ -52,7 +51,7 @@ function App() {
               Sensação térmica
             </Card.Title>
             <Card.Data>
-              {weatherData?.main?.feels_like}<span>&#8451;</span>
+              <div>{weatherData?.main?.feels_like}<span>&#8451;</span></div>
             </Card.Data>
           </Card.Root>
 
@@ -61,7 +60,7 @@ function App() {
               Visibilidade
             </Card.Title>
             <Card.Data>
-              {weatherData?.visibility}<span>&#8451;</span>
+              <div>{weatherData?.visibility}<span>m</span></div>
             </Card.Data>
           </Card.Root>
 
@@ -70,7 +69,7 @@ function App() {
               Umidade
             </Card.Title>
             <Card.Data>
-              {weatherData?.main?.humidity}<span>&#8451;</span>
+              <div>{weatherData?.main?.humidity}<span>%</span></div>
             </Card.Data>
           </Card.Root>
 
@@ -79,7 +78,7 @@ function App() {
               Nebulosidade
             </Card.Title>
             <Card.Data>
-              {weatherData?.clouds?.all}<span>%</span>
+              <div>{weatherData?.clouds?.all}<span>%</span></div>
             </Card.Data>
           </Card.Root>
 
@@ -88,24 +87,23 @@ function App() {
             Pressão
             </Card.Title>
             <Card.Data>
-              <>
-              {weatherData?.main?.sea_level}<span>%</span>
-              {weatherData?.main?.grnd_level}<span>%</span>
-              </>
+              <div className='cards-card__multiple-itens'>
+                <div>Nivel do Mar:{weatherData?.main?.sea_level}<span> hPa</span></div>
+                <div>Nivel da Terra:{weatherData?.main?.grnd_level}<span> hPa</span></div>
+              </div>
             </Card.Data>
           </Card.Root>
 
-          <Card.Root  gridArea='wind'>
+          <Card.Root gridArea='wind'>
             <Card.Title>
               Vento
             </Card.Title>
             <Card.Data>
-              <>
-              {weatherData?.wind?.speed}<span>m/s</span>
-              {weatherData?.wind?.deg}<span>%</span>
-              {weatherData?.wind?.gust}<span>m/s</span>
-              
-              </>
+              <div className='cards-card__multiple-itens'>
+                <div>{weatherData?.wind?.speed}<span> m/s</span></div>
+                <div>{weatherData?.wind?.deg}<span> graus</span></div>
+                <div>{weatherData?.wind?.gust}<span> m/s</span></div>
+              </div>
             </Card.Data>
           </Card.Root>
         </CardGridLayout>
