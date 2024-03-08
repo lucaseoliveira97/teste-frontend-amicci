@@ -40,6 +40,10 @@ b
 {
     width: clamp(120px, 100%, var(--desktop-breakpoint));
     margin: 0 auto;
+
+    @media (max-width: #{var.$desktop}) {
+        padding: 10px;
+    }
 }
 .main--card
 {
