@@ -7,6 +7,7 @@ import { useCallback, useState } from 'react';
 import useCityWeather from './hooks/useCityWeather';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { capitalized } from './utils/string';
 
 
 
@@ -26,17 +27,23 @@ function App() {
         <CardGridLayout gridAreasDesktop={gridAreasDesktop} gridAreasMobile={gridAreasMobile}>
           <Card.Root gridArea='temp'>
             <Card.Header>
-              <h2>{weatherData?.name}</h2>
+              <div className='cards-card__header-description'>
+                <img src={`https://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`} alt="Clima icone" />
+                <h2>{weatherData?.name}</h2>
+              </div>
               <h1>
                 Temperatura
               </h1>
             </Card.Header>
             <Card.Data>
-              {weatherData?.main?.temp}<span>&#8451;</span>
+              <div>
+                <h1>{weatherData?.main?.temp}<span className='cards--card-symbol'>&#8451;</span></h1>
+              </div>
+                {capitalized(weatherData?.weather[0]?.description)}     
             </Card.Data>
             <Card.Footer>
-              <div>Maxima:{weatherData?.main?.temp_max}<span>&#8451;</span></div>
-              <div>Minimo:{weatherData?.main?.temp_min}<span>&#8451;</span></div>
+              <div><b>Maxima:</b>{weatherData?.main?.temp_max}<span>&#8451;</span></div>
+              <div><b>Minimo:</b>{weatherData?.main?.temp_min}<span>&#8451;</span></div>
             </Card.Footer>
           </Card.Root>
 
