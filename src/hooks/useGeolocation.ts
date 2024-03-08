@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { OpenWeatherResponse, getOpenWeatherEndpoint } from '../services/openWeatherMap';
-import { getGooglemapsEndpoint } from '../services/googleMaps';
+import { useState, useEffect } from 'react';
+
 
 export type UseGeolocationResponse = 
 {

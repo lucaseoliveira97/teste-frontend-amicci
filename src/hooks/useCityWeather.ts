@@ -6,19 +6,22 @@ import useGeolocation, { UseGeolocationResponse } from './useGeolocation';
 type UseCityWeatherResponse = 
 {
     city:string,
+    isLoading:boolean,
     error:boolean,
     weatherData: undefined | OpenWeatherResponse ,
     fetchCity: (city:string) => void,
-    fetchLatLong: (lat:number, long:number) => void
+    fetchLatLong: () => void
 }
 
 function useCityWeather() : UseCityWeatherResponse {
     const [city, setCity] = useState<string>("");
+    const [isLoading, setIdLoading] = useState<boolean>(true)
     const {lat, long} : UseGeolocationResponse = useGeolocation()
     const [data, setData] = useState<OpenWeatherResponse>();
     const [error, setError] = useState<boolean>(false);
     const getWeather = async (city:string) => {
         try {
+          setIdLoading(true)
           const apiResponse = await fetch(getOpenWeatherEndpoint(city));
           const json:OpenWeatherResponse = await apiResponse.json();
           setCity(city)
@@ -26,6 +29,7 @@ function useCityWeather() : UseCityWeatherResponse {
         } catch (error) {
           setError(true);
         }
+        setIdLoading(false)
     };
     const getCity = async (lat:number, long:number) => {
         try {
@@ -40,11 +44,11 @@ function useCityWeather() : UseCityWeatherResponse {
     };
 
     const fetchCity = useCallback((city:string)=>getWeather(city),[])
-    const fetchLatLong = useCallback((lat:number, long:number)=>getCity(lat,long),[])
+    const fetchLatLong = useCallback(()=>getCity(lat,long),[])
     useEffect( ()=>{
       getCity(lat, long);
     },[lat, long])
 
-  return {city, error, weatherData:data,fetchCity,fetchLatLong } as const;
+  return {city, isLoading,error, weatherData:data,fetchCity,fetchLatLong } as const;
 }
 export default useCityWeather;

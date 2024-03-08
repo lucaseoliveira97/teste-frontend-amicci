@@ -1,5 +1,5 @@
 const API_KEY = "5a555c26f6777ed5d61c82bea1ac1a90";
-export const getOpenWeatherEndpoint = (city:string)=> `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&lang=pt_br`
+export const getOpenWeatherEndpoint = (city:string)=> `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&lang=pt_br&units=metric`
 
 export type OpenWeatherResponse = {
     "teste":"a"
