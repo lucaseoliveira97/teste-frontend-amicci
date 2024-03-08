@@ -5,8 +5,3 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-auto-rows: 10rem; // this does the trick
 }
-.cards-card__header
-{
-    display: flex;
-    justify-content: space-between;
-}
